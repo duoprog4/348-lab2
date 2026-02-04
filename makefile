@@ -1,26 +1,19 @@
-# Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra
+CC = g++
+CFLAGS = -Wall -c
 
-# Target executable
-TARGET = program
+TARGET = isevenorodd
 SOURCES = main.c isEven.c
 OBJECTS = $(SOURCES:.c=.o)
 
-# Default target
 all: $(TARGET)
 
-# Link object files to create executable
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^
 
-# Compile source files to object files
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean build artifacts
 clean:
 	rm -f $(OBJECTS) $(TARGET)
 
-# Phony targets
 .PHONY: all clean
